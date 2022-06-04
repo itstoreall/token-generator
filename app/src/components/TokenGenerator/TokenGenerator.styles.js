@@ -2,8 +2,6 @@ import s from 'styled-components';
 
 export const Background = s.div`
   padding: 20px;
-  // background-color: #fff;
-  background-color: #f5f6f9;
 
   @media screen and (min-width: 1000px) {
     padding: 30px;
@@ -43,6 +41,7 @@ export const Column = s.div`
   }
 
   @media screen and (min-width: 1000px) {
+    // width: 31.8%;
     width: 31.8%;
 
     &:not(:last-child) {
@@ -52,24 +51,24 @@ export const Column = s.div`
 `;
 
 export const ColumnBlock = s.div`
-background-color: #fff;
-margin-bottom: ${({ mb }) => mb};
-border-radius: 0 0 4px 4px;
-box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  margin-bottom: ${({ mb }) => mb};
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 `;
 
-export const BlockTitle = s.div`
+export const BlockContent = s.div`
+  padding: 25px 15px;
+  border-radius: 0 0 4px 4px;
+`;
+
+export const BlockTitle = s.h2`
   padding: 15px 15px;
   font-size: 16px;
   font-weight: 500;
   color: #fff;
   background-color: #343a40;
   border-radius: 4px 4px 0 0;
-`;
-
-export const BlockContent = s.div`
-  padding: 15px 15px;
-  height: 200px;
 `;
 
 export const ColumnButton = s.button`
