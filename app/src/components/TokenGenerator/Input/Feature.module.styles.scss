@@ -1,0 +1,57 @@
+@import './refs.scss';
+
+.Feature {
+  padding: 20px;
+}
+
+input,
+button {
+  font: inherit;
+}
+
+// Inputs
+.inputTitle {
+  margin-bottom: 20px;
+  font-weight: 500;
+  color: rgba(135, 207, 235, 0.51);
+}
+
+.Input {
+  padding: 10px 12px;
+  width: 100%;
+  border: 1px solid $primaryTextColor;
+  border-radius: 4px;
+  outline: none;
+  color: $primaryTextColor;
+
+  &::placeholder {
+    color: $primaryTextColor;
+  }
+
+  &:focus::placeholder {
+    opacity: 0;
+  }
+
+  &:focus {
+    padding: 9px 11px;
+    border: 2px solid $activeLinkColor;
+    color: $primaryTextColor;
+  }
+
+  &__status {
+    padding-top: 15px;
+    font-size: 14px;
+  }
+
+  &__successful {
+    color: $activeLinkColor;
+  }
+
+  &__done {
+    color: palevioletred;
+  }
+
+  &__error {
+    color: red;
+  }
+}
