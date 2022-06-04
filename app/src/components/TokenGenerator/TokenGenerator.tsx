@@ -2,8 +2,10 @@ import {
   Background,
   Wrapper,
   Column,
-  ColumnTitle,
-  ColumnContent,
+  ColumnBlock,
+  BlockTitle,
+  BlockContent,
+  ColumnButton,
 } from './styles';
 
 const TokenGenerator = () => {
@@ -11,16 +13,36 @@ const TokenGenerator = () => {
     <Background>
       <Wrapper>
         <Column>
-          <ColumnTitle>Token Details</ColumnTitle>
-          <ColumnContent>Token Details</ColumnContent>
+          <ColumnBlock>
+            <BlockTitle>Token Details</BlockTitle>
+            <BlockContent>Token Details content</BlockContent>
+          </ColumnBlock>
         </Column>
+
         <Column>
-          <ColumnTitle>Token Features</ColumnTitle>
-          <ColumnContent>Token Features</ColumnContent>
+          <ColumnBlock>
+            <BlockTitle>Token Features</BlockTitle>
+            <BlockContent>Token Features content</BlockContent>
+          </ColumnBlock>
         </Column>
+
         <Column>
-          <ColumnTitle>Token Type and Network</ColumnTitle>
-          <ColumnContent>Token Type and Network</ColumnContent>
+          <ColumnBlock mb={'20px'}>
+            <BlockTitle>Token Type and Network</BlockTitle>
+            <BlockContent>Token Type and Network content</BlockContent>
+          </ColumnBlock>
+
+          <ColumnBlock mb={'20px'}>
+            <BlockTitle>Agreement</BlockTitle>
+            <BlockContent>Agreement content</BlockContent>
+          </ColumnBlock>
+
+          <ColumnBlock mb={'20px'}>
+            <BlockTitle>Transaction</BlockTitle>
+            <BlockContent>Transaction content</BlockContent>
+          </ColumnBlock>
+
+          <ColumnButton>Confirm</ColumnButton>
         </Column>
       </Wrapper>
     </Background>

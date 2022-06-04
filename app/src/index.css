@@ -17,6 +17,8 @@ h3 {
 }
 
 button {
+  display: block;
+  border: none;
   cursor: pointer;
 }
 
