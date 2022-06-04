@@ -19,6 +19,8 @@ const TokenGenerator = () => {
   const [tokenNameInputValue, setTokenNameInputValue] = useState('');
   const [tokenSymbolInputValue, setTokenSymbolInputValue] = useState('');
   const [tokenDecimalsInputValue, setTokenDecimalsInputValue] = useState('18');
+  const [tokenSupplyInputValue, setTokenSupplyInputValue] = useState('');
+  const [tokenSupplyMaxInputValue, setTokenSupplyMaxInputValue] = useState('');
   // const [inputStatus, setInputStatus] = useState('input is empty');
 
   return (
@@ -30,6 +32,10 @@ const TokenGenerator = () => {
         setTokenSymbolInputValue,
         tokenDecimalsInputValue,
         setTokenDecimalsInputValue,
+        tokenSupplyInputValue,
+        setTokenSupplyInputValue,
+        tokenSupplyMaxInputValue,
+        setTokenSupplyMaxInputValue,
         // inputStatus,
         // setInputStatus,
       }}
@@ -41,6 +47,7 @@ const TokenGenerator = () => {
               <BlockTitle>Token Details</BlockTitle>
               <BlockContent>
                 <Input
+                  type={'text'}
                   subtitle={'Token Name *'}
                   name={'token_name'}
                   placeholder={'Your token name'}
@@ -48,6 +55,7 @@ const TokenGenerator = () => {
                 />
 
                 <Input
+                  type={'text'}
                   subtitle={'Token Symbol *'}
                   name={'token_symbol'}
                   placeholder={'Your token symbol'}
@@ -57,6 +65,7 @@ const TokenGenerator = () => {
                 />
 
                 <Input
+                  type={'number'}
                   subtitle={'Token decimals *'}
                   name={'token_decimals'}
                   placeholder={'18'}
@@ -64,6 +73,25 @@ const TokenGenerator = () => {
                   description={
                     "Insert the decimal precision of your token. If you don't know what to insert, use 18."
                   }
+                />
+
+                <Input
+                  type={'number'}
+                  subtitle={'Initial Supply *'}
+                  name={'token_supply'}
+                  placeholder={'Your token initial supply'}
+                  description={
+                    'Insert the initial number of tokens available. Will be put in your account.'
+                  }
+                />
+
+                <Input
+                  type={'number'}
+                  subtitle={'Total Supply *'}
+                  name={'token_supply'}
+                  placeholder={'Your token max supply'}
+                  disable
+                  description={'Insert the maximum number of tokens available.'}
                 />
               </BlockContent>
             </ColumnBlock>

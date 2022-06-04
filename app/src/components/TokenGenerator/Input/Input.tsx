@@ -9,7 +9,7 @@ import {
   BaseInputDescription,
 } from './Input.styles.js';
 
-const Input = ({ subtitle, name, placeholder, disable, description }) => {
+const Input = ({ subtitle, type, name, placeholder, disable, description }) => {
   console.log('Input render');
 
   // const [inputValue, setInputValue] = useState('');
@@ -20,6 +20,10 @@ const Input = ({ subtitle, name, placeholder, disable, description }) => {
     tokenSymbolInputValue,
     setTokenSymbolInputValue,
     tokenDecimalsInputValue,
+    tokenSupplyInputValue,
+    setTokenSupplyInputValue,
+    tokenSupplyMaxInputValue,
+    setTokenSupplyMaxInputValue,
     // setTokenDecimalsInputValue,
     // inputStatus,
     // setInputStatus,
@@ -30,7 +34,11 @@ const Input = ({ subtitle, name, placeholder, disable, description }) => {
   const inputHandler = (value: String) => {
     value.length <= max && name === 'token_name'
       ? setTokenNameInputValue(value)
-      : name === 'token_symbol' && setTokenSymbolInputValue(value);
+      : name === 'token_symbol'
+      ? setTokenSymbolInputValue(value)
+      : name === 'token_supply'
+      ? setTokenSupplyInputValue(value)
+      : name === 'token_supply_max' && setTokenSupplyMaxInputValue(value);
     // : setTokenSymbolInputValue(inputValue === null ? '' : inputValue);
 
     // setInputStatus(value);
@@ -50,7 +58,7 @@ const Input = ({ subtitle, name, placeholder, disable, description }) => {
     <BaseInputWrap>
       <BaseInputSubtitle>{subtitle}</BaseInputSubtitle>
       <BaseInput
-        type='text'
+        type={type}
         name={name}
         placeholder={placeholder}
         disabled={disable}
@@ -60,7 +68,11 @@ const Input = ({ subtitle, name, placeholder, disable, description }) => {
             ? tokenNameInputValue
             : name === 'token_symbol'
             ? tokenSymbolInputValue
-            : name === 'token_decimals' && tokenDecimalsInputValue
+            : name === 'token_decimals'
+            ? tokenDecimalsInputValue
+            : name === 'token_supply'
+            ? tokenSupplyInputValue
+            : name === 'token_supply_max' && tokenSupplyMaxInputValue
         }
         onChange={(e: {}) => {
           inputHandler(e.target.value);
