@@ -1,7 +1,6 @@
 // @ts-nocheck
 import { useContext } from 'react';
 import InputContext from '../hooks/InputContext.jsx';
-// import { BlockSubtitle, BlockInputDescription } from '../TokenGenerator.styles';
 import {
   BaseInputWrap,
   BaseInput,
@@ -10,24 +9,22 @@ import {
 } from './Input.styles.js';
 
 const Input = ({ subtitle, type, name, placeholder, disable, description }) => {
-  console.log('Input render');
-
-  // const [inputValue, setInputValue] = useState('');
-  // const [inputStatus, setInputStatus] = useState('input is empty');
   const {
     tokenNameInputValue,
     setTokenNameInputValue,
     tokenSymbolInputValue,
     setTokenSymbolInputValue,
     tokenDecimalsInputValue,
+    // setTokenDecimalsInputValue,
     tokenSupplyInputValue,
     setTokenSupplyInputValue,
     tokenSupplyMaxInputValue,
     setTokenSupplyMaxInputValue,
-    // setTokenDecimalsInputValue,
-    // inputStatus,
-    // setInputStatus,
+    inputStatus,
+    setInputStatus,
   } = useContext(InputContext);
+
+  console.log(`Input render (${inputStatus})`);
 
   const max = 30;
 
@@ -39,20 +36,9 @@ const Input = ({ subtitle, type, name, placeholder, disable, description }) => {
       : name === 'token_supply'
       ? setTokenSupplyInputValue(value)
       : name === 'token_supply_max' && setTokenSupplyMaxInputValue(value);
-    // : setTokenSymbolInputValue(inputValue === null ? '' : inputValue);
-
-    // setInputStatus(value);
-  };
-
-  /*
-  const inputHandler = (value: String) => {
-    value.length <= max
-      ? setTokenSymbolInputValue(value)
-      : setTokenSymbolInputValue(inputValue === null ? '' : inputValue);
 
     setInputStatus(value);
   };
-  */
 
   return (
     <BaseInputWrap>

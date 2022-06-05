@@ -1,10 +1,4 @@
-.PHONY: devnet app
-
-env:
-  cd app; cat > .env
-
-yarn:
-  cd app; yarn
+.PHONY: app
 
 app:
   cd app; yarn start

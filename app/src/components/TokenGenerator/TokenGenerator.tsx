@@ -7,12 +7,11 @@ import {
   ColumnBlock,
   BlockContent,
   BlockTitle,
-  // BlockSubtitle,
-  // BlockInputDescription,
   ColumnButton,
 } from './TokenGenerator.styles';
 import InputContext from './hooks/InputContext.jsx';
 import Input from './Input';
+import Select from './Select';
 
 const TokenGenerator = () => {
   console.log('TokenGenerator render');
@@ -21,7 +20,7 @@ const TokenGenerator = () => {
   const [tokenDecimalsInputValue, setTokenDecimalsInputValue] = useState('18');
   const [tokenSupplyInputValue, setTokenSupplyInputValue] = useState('');
   const [tokenSupplyMaxInputValue, setTokenSupplyMaxInputValue] = useState('');
-  // const [inputStatus, setInputStatus] = useState('input is empty');
+  const [inputStatus, setInputStatus] = useState('input is empty');
 
   return (
     <InputContext.Provider
@@ -36,8 +35,8 @@ const TokenGenerator = () => {
         setTokenSupplyInputValue,
         tokenSupplyMaxInputValue,
         setTokenSupplyMaxInputValue,
-        // inputStatus,
-        // setInputStatus,
+        inputStatus,
+        setInputStatus,
       }}
     >
       <Background>
@@ -107,7 +106,28 @@ const TokenGenerator = () => {
           <Column>
             <ColumnBlock mb={'20px'}>
               <BlockTitle>Token Type and Network</BlockTitle>
-              <BlockContent>Token Type and Network content</BlockContent>
+              <BlockContent>
+                <Select
+                  subtitle={'Token Type *'}
+                  options={[
+                    'HelloProgram',
+                    'SympleProgram',
+                    'StandartProgram',
+                    'BurnableProgram',
+                  ]}
+                  description={'Choose your Token Type.'}
+                />
+
+                <Select
+                  subtitle={'Network *'}
+                  options={[
+                    'Mainnet Beta Network',
+                    'Testnet Network',
+                    'Devnet Network',
+                  ]}
+                  description={'Choose your Network.'}
+                />
+              </BlockContent>
             </ColumnBlock>
 
             <ColumnBlock mb={'20px'}>
