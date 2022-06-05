@@ -1,4 +1,4 @@
-.PHONY: devnet app
+.PHONY: app
 
 app:
   cd app; yarn start
