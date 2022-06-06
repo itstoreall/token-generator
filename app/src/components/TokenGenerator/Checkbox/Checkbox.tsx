@@ -3,8 +3,8 @@ import InputContext from '../hooks/InputContext.jsx';
 import {
   BaseCheckboxLabel,
   BaseCheckboxInput,
-  BaseCheckboxDescriptionWrap,
-  BaseCheckboxDescription,
+  BaseCheckboxTextWrap,
+  BaseCheckboxText,
   BaseCheckboxLink,
 } from './Checkbox.styles';
 
@@ -21,8 +21,8 @@ const Checkbox = () => {
         }}
       />
 
-      <BaseCheckboxDescriptionWrap>
-        <BaseCheckboxDescription>{` I have read, understood and agreed to Token Generator's `}</BaseCheckboxDescription>
+      <BaseCheckboxTextWrap>
+        <BaseCheckboxText>{` I have read, understood and agreed to Token Generator's `}</BaseCheckboxText>
         <BaseCheckboxLink
           href='https://google.com'
           target='_blank'
@@ -30,7 +30,7 @@ const Checkbox = () => {
         >
           Terms of Use
         </BaseCheckboxLink>
-      </BaseCheckboxDescriptionWrap>
+      </BaseCheckboxTextWrap>
     </BaseCheckboxLabel>
   );
 };
