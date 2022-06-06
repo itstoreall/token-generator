@@ -12,6 +12,7 @@ import {
 import InputContext from './hooks/InputContext.jsx';
 import Input from './Input';
 import Select from './Select';
+import Checkbox from './Checkbox';
 
 const TokenGenerator = () => {
   console.log('TokenGenerator render');
@@ -21,6 +22,7 @@ const TokenGenerator = () => {
   const [tokenSupplyInputValue, setTokenSupplyInputValue] = useState('');
   const [tokenSupplyMaxInputValue, setTokenSupplyMaxInputValue] = useState('');
   const [inputStatus, setInputStatus] = useState('input is empty');
+  const [agreementIsChecked, setAgreementIsChecked] = useState(false);
 
   return (
     <InputContext.Provider
@@ -37,15 +39,18 @@ const TokenGenerator = () => {
         setTokenSupplyMaxInputValue,
         inputStatus,
         setInputStatus,
+        agreementIsChecked,
+        setAgreementIsChecked,
       }}
     >
-      <Background>
-        <Wrapper>
-          <Column>
-            <ColumnBlock>
-              <BlockTitle>Token Details</BlockTitle>
-              <BlockContent>
+      <Background className='Background'>
+        <Wrapper className='Wrapper'>
+          <Column className='ColumnTokenDetails'>
+            <ColumnBlock className='ColumnBlock'>
+              <BlockTitle className='BlockTitle'>Token Details</BlockTitle>
+              <BlockContent className='BlockContent'>
                 <Input
+                  className='inputTokenName'
                   type={'text'}
                   subtitle={'Token Name *'}
                   name={'token_name'}
@@ -54,6 +59,7 @@ const TokenGenerator = () => {
                 />
 
                 <Input
+                  className='inputTokenSymbol'
                   type={'text'}
                   subtitle={'Token Symbol *'}
                   name={'token_symbol'}
@@ -64,6 +70,7 @@ const TokenGenerator = () => {
                 />
 
                 <Input
+                  className='inputTokenDecimals'
                   type={'number'}
                   subtitle={'Token decimals *'}
                   name={'token_decimals'}
@@ -75,6 +82,7 @@ const TokenGenerator = () => {
                 />
 
                 <Input
+                  className='inputTokenInitialSupply'
                   type={'number'}
                   subtitle={'Initial Supply *'}
                   name={'token_supply'}
@@ -85,6 +93,7 @@ const TokenGenerator = () => {
                 />
 
                 <Input
+                  className='inputTokenTotalSupply'
                   type={'number'}
                   subtitle={'Total Supply *'}
                   name={'token_supply'}
@@ -96,19 +105,25 @@ const TokenGenerator = () => {
             </ColumnBlock>
           </Column>
 
-          <Column>
-            <ColumnBlock>
-              <BlockTitle>Token Features</BlockTitle>
-              <BlockContent>Token Features content</BlockContent>
+          <Column className='ColumnTokenFeatures'>
+            <ColumnBlock className='ColumnBlock'>
+              <BlockTitle className='BlockTitle'>Token Features</BlockTitle>
+              <BlockContent className='BlockContent'>
+                Token Features content
+              </BlockContent>
             </ColumnBlock>
           </Column>
 
-          <Column>
-            <ColumnBlock mb={'20px'}>
-              <BlockTitle>Token Type and Network</BlockTitle>
-              <BlockContent>
+          <Column className='ColumnTokenTypeAndNetwork'>
+            <ColumnBlock className='ColumnBlock' mb={'20px'}>
+              <BlockTitle className='BlockTitle'>
+                Token Type and Network
+              </BlockTitle>
+              <BlockContent className='BlockContent'>
                 <Select
+                  className='SelectProgram'
                   subtitle={'Token Type *'}
+                  name={'select_program'}
                   options={[
                     'HelloProgram',
                     'SympleProgram',
@@ -119,7 +134,9 @@ const TokenGenerator = () => {
                 />
 
                 <Select
+                  className='SelectNetwork'
                   subtitle={'Network *'}
+                  name={'select_network'}
                   options={[
                     'Mainnet Beta Network',
                     'Testnet Network',
@@ -130,17 +147,21 @@ const TokenGenerator = () => {
               </BlockContent>
             </ColumnBlock>
 
-            <ColumnBlock mb={'20px'}>
-              <BlockTitle>Agreement</BlockTitle>
-              <BlockContent>Agreement content</BlockContent>
+            <ColumnBlock className='ColumnBlock' mb={'20px'}>
+              <BlockTitle className='BlockTitle'>Agreement</BlockTitle>
+              <BlockContent className='BlockContent'>
+                <Checkbox />
+              </BlockContent>
             </ColumnBlock>
 
-            <ColumnBlock mb={'20px'}>
-              <BlockTitle>Transaction</BlockTitle>
-              <BlockContent>Transaction content</BlockContent>
+            <ColumnBlock className='ColumnBlock' mb={'20px'}>
+              <BlockTitle className='BlockTitle'>Transaction</BlockTitle>
+              <BlockContent className='BlockContent'>
+                Transaction content
+              </BlockContent>
             </ColumnBlock>
 
-            <ColumnButton>Confirm</ColumnButton>
+            <ColumnButton className='ColumnButton'>Confirm</ColumnButton>
           </Column>
         </Wrapper>
       </Background>
