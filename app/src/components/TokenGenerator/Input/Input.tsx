@@ -41,9 +41,12 @@ const Input = ({ subtitle, type, name, placeholder, disable, description }) => {
   };
 
   return (
-    <BaseInputWrap>
-      <BaseInputSubtitle>{subtitle}</BaseInputSubtitle>
+    <BaseInputWrap className={`BaseInputWrap-${name}`}>
+      <BaseInputSubtitle className={`BaseInputSubtitle-${name}`}>
+        {subtitle}
+      </BaseInputSubtitle>
       <BaseInput
+        className={`BaseInput-${name}`}
         type={type}
         name={name}
         placeholder={placeholder}
@@ -64,7 +67,9 @@ const Input = ({ subtitle, type, name, placeholder, disable, description }) => {
           inputHandler(e.target.value);
         }}
       />
-      <BaseInputDescription>{description}</BaseInputDescription>
+      <BaseInputDescription className={`BaseInputDescription-${name}`}>
+        {description}
+      </BaseInputDescription>
     </BaseInputWrap>
   );
 };

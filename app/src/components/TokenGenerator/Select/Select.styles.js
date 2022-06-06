@@ -73,7 +73,17 @@ export const BaseSelectCheckMark = s.div`
 `;
 
 export const BaseSelectDescription = s.p`
+  margin-bottom: ${({ mb }) => mb}px;
   font-size: 12px;
   font-weight: 500;
   color: #6c757d;
+`;
+
+export const BaseSelectInfoBlock = s.div`
+  padding: 20px;
+  width: auto;
+  color: #856404;
+  background-color: #fff3cd;
+  border: 1px solid #ffeeba;
+  border-radius: 4px;
 `;

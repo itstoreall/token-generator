@@ -9,45 +9,53 @@ import {
   List,
   Option,
   BaseSelectDescription,
+  BaseSelectInfoBlock,
 } from './Select.styles.js';
 import SelectArrow from './SelectArrow.tsx';
 import SelectCheckMark from './SelectCheckMark.tsx';
 
-const Select = ({ subtitle, options, description }) => {
+const Select = ({ subtitle, name, options, description }) => {
   console.log('Select render');
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState(options[0]);
 
   const toggling = () => setIsOpen(!isOpen);
 
-  const onOptionClicked = value => () => {
+  const onOptionClicked = (value: String) => () => {
     setSelectedOption(value);
     setIsOpen(false);
   };
 
   selectedOption && console.log(selectedOption);
+  selectedOption && console.log('name', name);
 
   return (
-    <BaseSelectWrap className='BaseSelectWrap'>
-      <BaseSelectSubtitle className='BaseSelectSubtitle'>
+    <BaseSelectWrap className={`BaseSelectWrap-${name}`}>
+      <BaseSelectSubtitle className={`BaseSelectSubtitle-${name}`}>
         {subtitle}
       </BaseSelectSubtitle>
-      <BaseSelect className='BaseSelect'>
-        <BaseSelectHeader className='BaseSelectHeader' onClick={toggling}>
+
+      <BaseSelect className={`BaseSelect-${name}`}>
+        <BaseSelectHeader
+          className={`BaseSelectHeader-${name}`}
+          onClick={toggling}
+        >
           {selectedOption || options[0]}
-          <SelectArrow />
+          <SelectArrow className={`SelectArrow-${name}`} />
         </BaseSelectHeader>
 
         {isOpen && (
-          <ListContainer className='ListContainer'>
-            <List className='List'>
-              {options.map(option => (
+          <ListContainer className={`ListContainer-${name}`}>
+            <List className={`List-${name}`}>
+              {options.map((option: String) => (
                 <Option
-                  className='Option'
+                  className={`Option-${name}`}
                   onClick={onOptionClicked(option)}
                   key={Math.random()}
                 >
-                  {option === selectedOption && <SelectCheckMark />}
+                  {option === selectedOption && (
+                    <SelectCheckMark className='SelectCheckMark' />
+                  )}
                   {option}
                 </Option>
               ))}
@@ -55,9 +63,32 @@ const Select = ({ subtitle, options, description }) => {
           </ListContainer>
         )}
       </BaseSelect>
-      <BaseSelectDescription className='BaseSelectDescription'>
+
+      <BaseSelectDescription
+        className={`BaseSelectDescription-${name}`}
+        mb={
+          name === 'select_network' && selectedOption !== 'Mainnet Beta Network'
+            ? 20
+            : 0
+        }
+      >
         {description}
       </BaseSelectDescription>
+
+      {name === 'select_network' &&
+        (selectedOption === 'Testnet Network' ||
+          selectedOption === 'Devnet Network') && (
+          <BaseSelectInfoBlock className={`BaseSelectInfoBlock-${name}`}>
+            <b>{`You selected a ${selectedOption}.`}</b>
+            <hr color='#ffe8a1' size='1' />
+            {
+              <p>
+                To deploy on Mainnet Network you must select Mainnet Beta
+                Network.
+              </p>
+            }
+          </BaseSelectInfoBlock>
+        )}
     </BaseSelectWrap>
   );
 };
