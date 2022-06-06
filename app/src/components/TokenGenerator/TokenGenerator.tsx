@@ -13,6 +13,7 @@ import InputContext from './hooks/InputContext.jsx';
 import Input from './Input';
 import Select from './Select';
 import Checkbox from './Checkbox';
+import Switch from './Switch';
 
 const TokenGenerator = () => {
   console.log('TokenGenerator render');
@@ -23,6 +24,7 @@ const TokenGenerator = () => {
   const [tokenSupplyMaxInputValue, setTokenSupplyMaxInputValue] = useState('');
   const [inputStatus, setInputStatus] = useState('input is empty');
   const [agreementIsChecked, setAgreementIsChecked] = useState(false);
+  const [isChecked, setIsChecked] = useState(false);
 
   return (
     <InputContext.Provider
@@ -41,6 +43,8 @@ const TokenGenerator = () => {
         setInputStatus,
         agreementIsChecked,
         setAgreementIsChecked,
+        isChecked,
+        setIsChecked,
       }}
     >
       <Background className='Background'>
@@ -109,7 +113,25 @@ const TokenGenerator = () => {
             <ColumnBlock className='ColumnBlock'>
               <BlockTitle className='BlockTitle'>Token Features</BlockTitle>
               <BlockContent className='BlockContent'>
-                Token Features content
+                <Switch
+                  name='switch_verified'
+                  text={'Verified Source Code'}
+                  description={
+                    'Your Token Source Code will be automatically verified on Etherscan.'
+                  }
+                />
+
+                <Switch
+                  name='switch_copyright'
+                  text={'Remove Copyright'}
+                  description={
+                    'Remove the link pointing to this page from your contract.'
+                  }
+                />
+
+                <Switch name='switch_burnable' text={'Burnable'} />
+                <Switch name='switch_mintable' text={'Mintable'} />
+                <Switch name='switch_recover' text={'Token Recover'} />
               </BlockContent>
             </ColumnBlock>
           </Column>

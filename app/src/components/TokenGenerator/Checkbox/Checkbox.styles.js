@@ -14,9 +14,9 @@ export const BaseCheckboxInput = s.input`
   }
 `;
 
-export const BaseCheckboxDescriptionWrap = s.div``;
+export const BaseCheckboxTextWrap = s.div``;
 
-export const BaseCheckboxDescription = s.span``;
+export const BaseCheckboxText = s.span``;
 
 export const BaseCheckboxLink = s.a`
   color: darkcyan;
