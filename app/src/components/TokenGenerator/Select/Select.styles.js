@@ -15,14 +15,16 @@ export const BaseSelect = s.div`
   position: relative;
   margin-bottom: 7px;
   font-size: 15px;
-  background-color: ${({ disabled }) => disabled && '#e9ecef'};
+  color: ${({ disable }) => (disable ? 'rgb(170, 170, 170)' : 'inherit')};
+  background-color: ${({ disable }) => (disable ? '#e9ecef' : '#fff')};
   border: 1px solid #ced4da;
   border-radius: 4px;
 
   &:hover {
-    border: 1px solid #80bdff;
-    outline: 3px solid rgb(0 123 255 / 25%);
-    cursor: pointer;
+    border: 1px solid ${({ disable }) => (disable ? '#ced4da' : '#80bdff')};
+    outline: ${({ disable }) =>
+      disable ? 'none' : '3px solid rgb(0 123 255 / 25%)'};
+    cursor: ${({ disable }) => (disable ? 'auto' : 'pointer')};
   }
 `;
 

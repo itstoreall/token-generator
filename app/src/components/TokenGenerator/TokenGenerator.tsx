@@ -8,12 +8,17 @@ import {
   BlockContent,
   BlockTitle,
   ColumnButton,
+  TransactionRowWrap,
+  TransactionRow,
+  TransactionRowText,
+  TransactionFee,
 } from './TokenGenerator.styles';
 import InputContext from './hooks/InputContext.jsx';
 import Input from './Input';
 import Select from './Select';
 import Checkbox from './Checkbox';
 import Switch from './Switch';
+import TransactionInfo from './TransactionInfo.tsx';
 
 const TokenGenerator = () => {
   console.log('TokenGenerator render');
@@ -24,7 +29,12 @@ const TokenGenerator = () => {
   const [tokenSupplyMaxInputValue, setTokenSupplyMaxInputValue] = useState('');
   const [inputStatus, setInputStatus] = useState('input is empty');
   const [agreementIsChecked, setAgreementIsChecked] = useState(false);
-  const [isChecked, setIsChecked] = useState(false);
+  const [isCheckedSwitchVerified, setIsCheckedSwitchVerified] = useState(false);
+  const [isCheckedSwitchCopyright, setIsCheckedSwitchCopyright] =
+    useState(false);
+  const [isCheckedSwitchBurnable, setIsCheckedSwitchBurnable] = useState(false);
+  const [isCheckedSwitchMintable, setIsCheckedSwitchMintable] = useState(false);
+  const [isCheckedSwitchRecover, setIsCheckedSwitchRecover] = useState(false);
 
   return (
     <InputContext.Provider
@@ -43,8 +53,16 @@ const TokenGenerator = () => {
         setInputStatus,
         agreementIsChecked,
         setAgreementIsChecked,
-        isChecked,
-        setIsChecked,
+        isCheckedSwitchVerified,
+        setIsCheckedSwitchVerified,
+        isCheckedSwitchCopyright,
+        setIsCheckedSwitchCopyright,
+        isCheckedSwitchBurnable,
+        setIsCheckedSwitchBurnable,
+        isCheckedSwitchMintable,
+        setIsCheckedSwitchMintable,
+        isCheckedSwitchRecover,
+        setIsCheckedSwitchRecover,
       }}
     >
       <Background className='Background'>
@@ -71,6 +89,7 @@ const TokenGenerator = () => {
                   description={
                     'Choose a symbol for your token (usually 3-5 chars).'
                   }
+                  disable={false}
                 />
 
                 <Input
@@ -79,10 +98,10 @@ const TokenGenerator = () => {
                   subtitle={'Token decimals *'}
                   name={'token_decimals'}
                   placeholder={'18'}
-                  disable
                   description={
                     "Insert the decimal precision of your token. If you don't know what to insert, use 18."
                   }
+                  disable={true}
                 />
 
                 <Input
@@ -94,6 +113,7 @@ const TokenGenerator = () => {
                   description={
                     'Insert the initial number of tokens available. Will be put in your account.'
                   }
+                  disable={false}
                 />
 
                 <Input
@@ -102,8 +122,8 @@ const TokenGenerator = () => {
                   subtitle={'Total Supply *'}
                   name={'token_supply'}
                   placeholder={'Your token max supply'}
-                  disable
                   description={'Insert the maximum number of tokens available.'}
+                  disable={true}
                 />
               </BlockContent>
             </ColumnBlock>
@@ -113,7 +133,35 @@ const TokenGenerator = () => {
             <ColumnBlock className='ColumnBlock'>
               <BlockTitle className='BlockTitle'>Token Features</BlockTitle>
               <BlockContent className='BlockContent'>
+                <Select
+                  subtitle={'Supply Type'}
+                  name={'select_supply'}
+                  options={['10K', 'Fixed', 'Capped', 'Unlimited']}
+                  description={'10k, Fixed, Unlimited, Capped'}
+                  disable={true}
+                  bg={'#e9ecef'}
+                />
+
+                <Select
+                  subtitle={'Access Type'}
+                  name={'select_access'}
+                  options={['None', 'Ownable', 'Role', 'Based']}
+                  description={'None, Ownable, Role Based'}
+                  disable={true}
+                  bg={'#e9ecef'}
+                />
+
+                <Select
+                  subtitle={'Transfer Type'}
+                  name={'select_transfer'}
+                  options={['Unstoppable', 'Pausable']}
+                  description={'Unstoppable, Pausable'}
+                  disable={true}
+                  bg={'#e9ecef'}
+                />
+
                 <Switch
+                  checked={isCheckedSwitchVerified}
                   name='switch_verified'
                   text={'Verified Source Code'}
                   description={
@@ -122,6 +170,7 @@ const TokenGenerator = () => {
                 />
 
                 <Switch
+                  checked={isCheckedSwitchCopyright}
                   name='switch_copyright'
                   text={'Remove Copyright'}
                   description={
@@ -143,7 +192,6 @@ const TokenGenerator = () => {
               </BlockTitle>
               <BlockContent className='BlockContent'>
                 <Select
-                  className='SelectProgram'
                   subtitle={'Token Type *'}
                   name={'select_program'}
                   options={[
@@ -153,10 +201,10 @@ const TokenGenerator = () => {
                     'BurnableProgram',
                   ]}
                   description={'Choose your Token Type.'}
+                  disable={false}
                 />
 
                 <Select
-                  className='SelectNetwork'
                   subtitle={'Network *'}
                   name={'select_network'}
                   options={[
@@ -165,6 +213,7 @@ const TokenGenerator = () => {
                     'Devnet Network',
                   ]}
                   description={'Choose your Network.'}
+                  disable={false}
                 />
               </BlockContent>
             </ColumnBlock>
@@ -177,9 +226,25 @@ const TokenGenerator = () => {
             </ColumnBlock>
 
             <ColumnBlock className='ColumnBlock' mb={'20px'}>
-              <BlockTitle className='BlockTitle'>Transaction</BlockTitle>
+              <BlockTitle className='BlockTitle' bg={'#17a2b8'}>
+                Transaction
+              </BlockTitle>
               <BlockContent className='BlockContent'>
-                Transaction content
+                <TransactionRow padding={'0 0 20px 0'}>
+                  <TransactionRowWrap>
+                    <TransactionRowText>Commission Fee:</TransactionRowText>
+                    <TransactionInfo />
+                  </TransactionRowWrap>
+                  <TransactionFee bg={'#28a745'}>0 SOL</TransactionFee>
+                </TransactionRow>
+
+                <TransactionRow padding={'20px 0 0 0'}>
+                  <TransactionRowWrap>
+                    <TransactionRowText>Gas Fee:</TransactionRowText>
+                    <TransactionInfo />
+                  </TransactionRowWrap>
+                  <TransactionFee bg={'#17a2b8'}>Variable</TransactionFee>
+                </TransactionRow>
               </BlockContent>
             </ColumnBlock>
 

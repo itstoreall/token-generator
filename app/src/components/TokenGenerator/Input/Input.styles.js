@@ -9,6 +9,7 @@ export const BaseInput = s.input`
   margin-bottom: 7px;
   width: calc(100% - 34px);
   font-size: 18px;
+  color: ${({ disable }) => (disable ? 'rgb(170, 170, 170)' : 'inherit')};
   background-color: ${({ disabled }) => disabled && '#e9ecef'};
   border: 1px solid #ced4da;
   border-radius: 4px;
@@ -16,6 +17,10 @@ export const BaseInput = s.input`
   &:focus {
     border: 1px solid #80bdff;
     outline: 3px solid rgb(0 123 255 / 25%);
+  }
+
+  &::placeholder {
+    color: ${({ disable }) => (disable ? 'rgb(170, 170, 170)' : '#6c757d')};
   }
 `;
 

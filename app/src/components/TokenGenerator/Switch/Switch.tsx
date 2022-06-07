@@ -11,10 +11,34 @@ import {
 } from './Switch.styles.js';
 
 const Switch = ({ name, text, description }) => {
-  const { isChecked, setIsChecked } = useContext(InputContext);
+  const {
+    isCheckedSwitchVerified,
+    setIsCheckedSwitchVerified,
+    isCheckedSwitchCopyright,
+    setIsCheckedSwitchCopyright,
+    isCheckedSwitchBurnable,
+    setIsCheckedSwitchBurnable,
+    isCheckedSwitchMintable,
+    setIsCheckedSwitchMintable,
+    isCheckedSwitchRecover,
+    setIsCheckedSwitchRecover,
+  } = useContext(InputContext);
 
-  console.log('isChecked', isChecked, name);
-  console.log('isChecked', isChecked, text);
+  // console.log('isChecked', isChecked, name);
+  // console.log('isChecked', isChecked, text);
+
+  const toggleHandler = () => {
+    name === 'switch_verified' &&
+      setIsCheckedSwitchVerified(!isCheckedSwitchVerified);
+    name === 'switch_copyright' &&
+      setIsCheckedSwitchCopyright(!isCheckedSwitchCopyright);
+    name === 'switch_burnable' &&
+      setIsCheckedSwitchBurnable(!isCheckedSwitchBurnable);
+    name === 'switch_mintable' &&
+      setIsCheckedSwitchMintable(!isCheckedSwitchMintable);
+    name === 'switch_burnable' &&
+      setIsCheckedSwitchRecover(!isCheckedSwitchRecover);
+  };
 
   return (
     <BaseSwitchWrap className={`BaseSwitchWrap-${name}`}>
@@ -25,15 +49,15 @@ const Switch = ({ name, text, description }) => {
         <BaseSwitch className={`BaseSwitch-${name}`}>
           <Checkbox
             className={`Checkbox-${name}`}
-            id='checkbox'
+            id={`checkbox-${name}`}
             type='checkbox'
             onChange={() => {
-              setIsChecked(!isChecked);
+              toggleHandler();
             }}
           />
           <CheckboxLabel
             className={`CheckboxLabel-${name}`}
-            htmlFor='checkbox'
+            htmlFor={`checkbox-${name}`}
           />
         </BaseSwitch>
 
