@@ -14,7 +14,7 @@ import {
 import SelectArrow from './SelectArrow.tsx';
 import SelectCheckMark from './SelectCheckMark.tsx';
 
-const Select = ({ subtitle, name, options, description }) => {
+const Select = ({ subtitle, name, options, description, disable, bg }) => {
   console.log('Select render');
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState(options[0]);
@@ -35,13 +35,13 @@ const Select = ({ subtitle, name, options, description }) => {
         {subtitle}
       </BaseSelectSubtitle>
 
-      <BaseSelect className={`BaseSelect-${name}`}>
+      <BaseSelect className={`BaseSelect-${name}`} disable={disable} bg={bg}>
         <BaseSelectHeader
           className={`BaseSelectHeader-${name}`}
-          onClick={toggling}
+          onClick={disable === false ? toggling : null}
         >
           {selectedOption || options[0]}
-          <SelectArrow className={`SelectArrow-${name}`} />
+          <SelectArrow className={`SelectArrow-${name}`} disable={disable} />
         </BaseSelectHeader>
 
         {isOpen && (

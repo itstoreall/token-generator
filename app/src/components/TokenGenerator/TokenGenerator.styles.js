@@ -67,7 +67,7 @@ export const BlockTitle = s.h2`
   font-size: 16px;
   font-weight: 500;
   color: #fff;
-  background-color: #343a40;
+  background-color: ${({ bg }) => (bg ? bg : '#343a40')};
   border-radius: 4px 4px 0 0;
 `;
 
@@ -85,4 +85,36 @@ export const ColumnButton = s.button`
   &:hover{
     background-color: #218838;
   }
+`;
+
+export const TransactionRowWrap = s.div`
+  display: flex;
+`;
+
+export const TransactionRow = s.span`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: ${({ padding }) => padding};
+
+  &:first-child {
+    border-bottom: 1px solid rgb(170, 170, 170);
+  }
+`;
+
+export const TransactionRowText = s.span`
+  margin-right: 3px;
+`;
+
+export const TransactionInfoIcon = s.span`
+  width: 18px;
+  height: 18px;
+`;
+
+export const TransactionFee = s.span`
+  padding: 3px 7px;
+  font-weight: 600;
+  color: #fff;
+  background-color: ${({ bg }) => bg};;
+  border-radius: 4px;
 `;

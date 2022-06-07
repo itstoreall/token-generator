@@ -51,6 +51,7 @@ const Input = ({ subtitle, type, name, placeholder, disable, description }) => {
         name={name}
         placeholder={placeholder}
         disabled={disable}
+        disable={disable}
         autoComplete='off'
         value={
           name === 'token_name'
