@@ -18,10 +18,9 @@ import Input from './Input';
 import Select from './Select';
 import Checkbox from './Checkbox';
 import Switch from './Switch';
-import TransactionInfo from './TransactionInfo.tsx';
+import TransactionInfo from './TransactionInfo';
 
 const TokenGenerator = () => {
-  console.log('TokenGenerator render');
   const [tokenNameInputValue, setTokenNameInputValue] = useState('');
   const [tokenSymbolInputValue, setTokenSymbolInputValue] = useState('');
   const [tokenDecimalsInputValue, setTokenDecimalsInputValue] = useState('18');
@@ -233,7 +232,11 @@ const TokenGenerator = () => {
                 <TransactionRow padding={'0 0 20px 0'}>
                   <TransactionRowWrap>
                     <TransactionRowText>Commission Fee:</TransactionRowText>
-                    <TransactionInfo />
+                    <TransactionInfo
+                      content={
+                        'Commission will be transferred directly to us through the Ethereum network as part of your payment. Commission will support Token Generator to keep it safe, running and constantly updated.'
+                      }
+                    />
                   </TransactionRowWrap>
                   <TransactionFee bg={'#28a745'}>0 SOL</TransactionFee>
                 </TransactionRow>
@@ -241,7 +244,11 @@ const TokenGenerator = () => {
                 <TransactionRow padding={'20px 0 0 0'}>
                   <TransactionRowWrap>
                     <TransactionRowText>Gas Fee:</TransactionRowText>
-                    <TransactionInfo />
+                    <TransactionInfo
+                      content={
+                        "It depends on Gas Limit and on current Gas price average. MetaMask will suggest both. Do not decrease Gas Limit to avoid transaction to fail. If you want, you can decrease Gas Price but your transaction could remain pending for minutes/hours. Read how to calculate right value in our FAQ. Failed transaction can't be refunded."
+                      }
+                    />
                   </TransactionRowWrap>
                   <TransactionFee bg={'#17a2b8'}>Variable</TransactionFee>
                 </TransactionRow>

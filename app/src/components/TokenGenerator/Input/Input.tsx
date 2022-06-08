@@ -20,11 +20,9 @@ const Input = ({ subtitle, type, name, placeholder, disable, description }) => {
     setTokenSupplyInputValue,
     tokenSupplyMaxInputValue,
     setTokenSupplyMaxInputValue,
-    inputStatus,
+    // inputStatus,
     setInputStatus,
   } = useContext(InputContext);
-
-  console.log(`Input render (${inputStatus})`);
 
   const max = 30;
 

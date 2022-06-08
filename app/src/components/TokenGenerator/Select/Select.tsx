@@ -15,7 +15,6 @@ import SelectArrow from './SelectArrow.tsx';
 import SelectCheckMark from './SelectCheckMark.tsx';
 
 const Select = ({ subtitle, name, options, description, disable, bg }) => {
-  console.log('Select render');
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState(options[0]);
 
@@ -25,9 +24,6 @@ const Select = ({ subtitle, name, options, description, disable, bg }) => {
     setSelectedOption(value);
     setIsOpen(false);
   };
-
-  selectedOption && console.log(selectedOption);
-  selectedOption && console.log('name', name);
 
   return (
     <BaseSelectWrap className={`BaseSelectWrap-${name}`}>
