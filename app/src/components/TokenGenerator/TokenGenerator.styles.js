@@ -106,11 +106,6 @@ export const TransactionRowText = s.span`
   margin-right: 3px;
 `;
 
-export const TransactionInfoIcon = s.span`
-  width: 18px;
-  height: 18px;
-`;
-
 export const TransactionFee = s.span`
   padding: 3px 7px;
   font-weight: 600;
