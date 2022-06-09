@@ -29,8 +29,7 @@ const TokenGenerator = () => {
   const [inputStatus, setInputStatus] = useState('input is empty');
   const [agreementIsChecked, setAgreementIsChecked] = useState(false);
   const [isCheckedSwitchVerified, setIsCheckedSwitchVerified] = useState(false);
-  const [isCheckedSwitchCopyright, setIsCheckedSwitchCopyright] =
-    useState(false);
+  const [isCheckedSwitchCopyrt, setIsCheckedSwitchCopyrt] = useState(false);
   const [isCheckedSwitchBurnable, setIsCheckedSwitchBurnable] = useState(false);
   const [isCheckedSwitchMintable, setIsCheckedSwitchMintable] = useState(false);
   const [isCheckedSwitchRecover, setIsCheckedSwitchRecover] = useState(false);
@@ -54,8 +53,8 @@ const TokenGenerator = () => {
         setAgreementIsChecked,
         isCheckedSwitchVerified,
         setIsCheckedSwitchVerified,
-        isCheckedSwitchCopyright,
-        setIsCheckedSwitchCopyright,
+        isCheckedSwitchCopyrt,
+        setIsCheckedSwitchCopyrt,
         isCheckedSwitchBurnable,
         setIsCheckedSwitchBurnable,
         isCheckedSwitchMintable,
@@ -169,7 +168,7 @@ const TokenGenerator = () => {
                 />
 
                 <Switch
-                  checked={isCheckedSwitchCopyright}
+                  checked={isCheckedSwitchCopyrt}
                   name='switch_copyright'
                   text={'Remove Copyright'}
                   description={
