@@ -7,8 +7,12 @@ import {
   ConnectionProvider,
   WalletProvider,
 } from '@solana/wallet-adapter-react';
-import TokenGenerator from './components/TokenGenerator';
 import { connect as log } from './logs/app-log';
+
+// --- Components:
+// import TokenGenerator from './components/TokenGenerator';
+import TestComponent from './components/TestComponent';
+// ---
 
 const App = () => {
   return (
@@ -37,7 +41,8 @@ const Context = ({ children }) => {
 const Content = () => {
   return (
     <>
-      <TokenGenerator />
+      {/* <TokenGenerator /> */}
+      <TestComponent />
     </>
   );
 };

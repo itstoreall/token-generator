@@ -14,8 +14,8 @@ const Switch = ({ name, text, description }) => {
   const {
     isCheckedSwitchVerified,
     setIsCheckedSwitchVerified,
-    isCheckedSwitchCopyright,
-    setIsCheckedSwitchCopyright,
+    isCheckedSwitchCopyrt,
+    setIsCheckedSwitchCopyrt,
     isCheckedSwitchBurnable,
     setIsCheckedSwitchBurnable,
     isCheckedSwitchMintable,
@@ -31,7 +31,7 @@ const Switch = ({ name, text, description }) => {
     name === 'switch_verified' &&
       setIsCheckedSwitchVerified(!isCheckedSwitchVerified);
     name === 'switch_copyright' &&
-      setIsCheckedSwitchCopyright(!isCheckedSwitchCopyright);
+      setIsCheckedSwitchCopyrt(!isCheckedSwitchCopyrt);
     name === 'switch_burnable' &&
       setIsCheckedSwitchBurnable(!isCheckedSwitchBurnable);
     name === 'switch_mintable' &&
