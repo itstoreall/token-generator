@@ -12,7 +12,14 @@ solana config set --url https://api.devnet.solana.com
 ---
 
 mkdir solana-wallets
-solana-keygen new --outfile solana-wallets/admin.json
+solana-keygen new --outfile solana-wallets/walletName.json
+
+helloProgram.json
+==============================================================================
+pubkey: 46tKfsRZAToWS5rZdgkPC2YAf9Kj1uXiNS2kXRumax7Y
+==============================================================================
+next cotton system laptop entire slot return action person pumpkin trip tenant
+==============================================================================
 
 admin.json
 ============================================================================

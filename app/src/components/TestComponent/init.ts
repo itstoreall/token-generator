@@ -5,12 +5,14 @@ import createKeypair from './createKeypair.ts';
 
 const init = async (
   connect: {},
+  programPrivatKey: [],
   adminPrivatKey: [],
   ronnyPrivatKey: [],
   helgaPrivatKey: []
 ) => {
   const mint = new PublicKey('8s8kL6Xnry39bBj9JYhsqm9ojYNyp9ywzF23tif86G8h');
 
+  const programKeypair = createKeypair(programPrivatKey);
   const adminKeypair = createKeypair(adminPrivatKey);
   const ronnyKeypair = createKeypair(ronnyPrivatKey);
   const helgaKeypair = createKeypair(helgaPrivatKey);
@@ -31,6 +33,8 @@ const init = async (
     helgaKeypair
   );
 
+  // console.log('mint -->', mint.toBase58());
+  // console.log('programKeypair -->', programKeypair.publicKey.toBase58());
   // console.log('adminKeypair -->', adminKeypair.publicKey.toBase58());
   // console.log('ronnyKeypair -->', ronnyKeypair.publicKey.toBase58());
   // console.log('helgaKeypair -->', helgaKeypair.publicKey.toBase58());
@@ -41,6 +45,7 @@ const init = async (
 
   return {
     keys: {
+      programKeypair,
       adminKeypair,
       ronnyKeypair,
       helgaKeypair,
@@ -50,7 +55,7 @@ const init = async (
       ronnyTokenPubkey,
       helgaTokenPubkey,
     },
-    token: mint,
+    mint,
   };
 };
 
