@@ -1,5 +1,6 @@
 // @ts-nocheck
 import { getAccount } from '@solana/spl-token';
+import { DECIMALS as dec } from '../../constants/TestComponent';
 
 const getBalances = async (connect: {}, keys: {}, accs: {}) => {
   // --- wallets:
@@ -29,12 +30,13 @@ const getBalances = async (connect: {}, keys: {}, accs: {}) => {
   );
 
   console.log('adminAccount:', adminAccount);
-  console.log('adm:', adminWalletBalance);
-  console.log('ron:', ronnyWalletBalance);
-  console.log('hel:', helgaWalletBalance);
-  console.log('adm:', adminTokenBalance.toString());
-  console.log('ron:', ronnyTokenAccInfo.toString());
-  console.log('hel:', helgaTokenAccInfo.toString());
+  console.log('adm:', adminWalletBalance / dec);
+  console.log('ron:', ronnyWalletBalance / dec);
+  console.log('hel:', helgaWalletBalance / dec);
+  console.log('adm:', Number(adminTokenBalance) / dec);
+  console.log('ron:', Number(ronnyTokenAccInfo) / dec);
+  console.log('hel:', Number(helgaTokenAccInfo) / dec);
+  // console.log('hel:', helgaTokenAccInfo.toString().toFixed(9));
 
   return {
     wallet: {
