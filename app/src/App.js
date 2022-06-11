@@ -11,7 +11,8 @@ import { connect as log } from './logs/app-log';
 
 // --- Components:
 // import TokenGenerator from './components/TokenGenerator';
-import TestComponent from './components/TestComponent';
+// import TestComponent from './components/TestComponent';
+import RustSolana from './components/RustSolana';
 // ---
 
 const App = () => {
@@ -42,7 +43,8 @@ const Content = () => {
   return (
     <>
       {/* <TokenGenerator /> */}
-      <TestComponent />
+      {/* <TestComponent /> */}
+      <RustSolana />
     </>
   );
 };

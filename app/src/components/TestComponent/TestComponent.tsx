@@ -14,10 +14,12 @@ import ronnyPrivatKey from '../../devnet/ronny.json';
 import helgaPrivatKey from '../../devnet/helga.json';
 import init from './init.ts';
 import getBalances from './getBalances.ts';
-import getTokenAccount from './getTokenAccount.ts';
-import transferSenderRecipient from './transferSenderRecipient.ts';
 import getMintInfo from './getMintInfo.ts';
 import getAccountInfo from './getAccountInfo.ts';
+import transferSenderRecipient from './transferSenderRecipient.ts';
+import approve from './approve.ts';
+import mintTo from './mintTo.ts';
+// import encodeAmount from './encodeAmount.ts';
 
 const TestComponent = () => {
   const [connect, setConnect] = useState(null);
@@ -68,9 +70,33 @@ const TestComponent = () => {
       recipient: { account: accs.adminTokenPubkey },
     };
 
+  const transferConfigAR = keys && // eslint-disable-line
+    accs && {
+      connect,
+      program: keys.programKeypair.publicKey,
+      sender: {
+        keypair: keys.adminKeypair,
+        wallet: keys.adminKeypair.publicKey,
+        account: accs.adminTokenPubkey,
+      },
+      recipient: { account: accs.ronnyTokenPubkey },
+    };
+
+  const transferConfigRA = keys && // eslint-disable-line
+    accs && {
+      connect,
+      program: keys.programKeypair.publicKey,
+      sender: {
+        keypair: keys.ronnyKeypair,
+        wallet: keys.ronnyKeypair.publicKey,
+        account: accs.ronnyTokenPubkey,
+      },
+      recipient: { account: accs.adminTokenPubkey },
+    };
+
   const getAllBalancesLog = async () => await getBalances(connect, keys, accs);
 
-  const getSPLTokenAcc = async () => await getTokenAccount(connect, keys, accs);
+  // const getSPLTokenAcc = async () => await getTokenAccount(connect, keys, accs);
 
   return (
     <>
@@ -90,9 +116,195 @@ const TestComponent = () => {
               borderRadius: '3px',
             }}
             disabled={!keys && !accs}
+            onClick={() => getMintInfo('mint', connect, mint)}
+          >
+            Token
+          </button>
+        </div>
+        <div style={{ padding: 40 }}>
+          <span style={{ marginRight: '20px' }}>open your console</span>
+        </div>
+      </div>
+
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          borderBottom: '1px solid #999',
+        }}
+      >
+        <div style={{ padding: 40 }}>
+          <button
+            style={{
+              padding: '5px 10px',
+              color: '#fff',
+              backgroundColor: 'teal',
+              borderRadius: '3px',
+            }}
+            disabled={!keys && !accs}
+            onClick={() => getMintInfo('decimals', connect, mint)}
+          >
+            Decimals
+          </button>
+        </div>
+        <div style={{ padding: 40 }}>
+          <span style={{ marginRight: '20px' }}>open your console</span>
+        </div>
+      </div>
+
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          borderBottom: '1px solid #999',
+        }}
+      >
+        <div style={{ padding: 40 }}>
+          <button
+            style={{
+              padding: '5px 10px',
+              color: '#fff',
+              backgroundColor: 'teal',
+              borderRadius: '3px',
+            }}
+            disabled={!keys && !accs}
+            onClick={() => getMintInfo('init', connect, mint)}
+          >
+            Initialized
+          </button>
+        </div>
+        <div style={{ padding: 40 }}>
+          <span style={{ marginRight: '20px' }}>open your console</span>
+        </div>
+      </div>
+
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          borderBottom: '1px solid #999',
+        }}
+      >
+        <div style={{ padding: 40 }}>
+          <button
+            style={{
+              padding: '5px 10px',
+              color: '#fff',
+              backgroundColor: 'teal',
+              borderRadius: '3px',
+            }}
+            disabled={!keys && !accs}
+            onClick={() => getMintInfo('supply', connect, mint)}
+          >
+            Supply
+          </button>
+        </div>
+        <div style={{ padding: 40 }}>
+          <span style={{ marginRight: '20px' }}>open your console</span>
+        </div>
+      </div>
+
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          borderBottom: '1px solid #999',
+        }}
+      >
+        <div style={{ padding: 40 }}>
+          <button
+            style={{
+              padding: '5px 10px',
+              color: '#fff',
+              backgroundColor: 'teal',
+              borderRadius: '3px',
+            }}
+            disabled={!keys && !accs}
+            onClick={() => getMintInfo('authority', connect, mint)}
+          >
+            Authority
+          </button>
+        </div>
+        <div style={{ padding: 40 }}>
+          <span style={{ marginRight: '20px' }}>open your console</span>
+        </div>
+      </div>
+
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          borderBottom: '1px solid #999',
+        }}
+      >
+        <div style={{ padding: 40 }}>
+          <button
+            style={{
+              padding: '5px 10px',
+              color: '#fff',
+              backgroundColor: 'teal',
+              borderRadius: '3px',
+            }}
+            disabled={!keys && !accs}
+            onClick={() =>
+              getAccountInfo('owner', connect, accs.adminTokenPubkey)
+            }
+          >
+            Owner
+          </button>
+        </div>
+        <div style={{ padding: 40 }}>
+          <span style={{ marginRight: '20px' }}>open your console</span>
+        </div>
+      </div>
+
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          borderBottom: '1px solid #999',
+        }}
+      >
+        <div style={{ padding: 40 }}>
+          <button
+            style={{
+              padding: '5px 10px',
+              color: '#fff',
+              backgroundColor: 'teal',
+              borderRadius: '3px',
+            }}
+            disabled={!keys && !accs}
+            onClick={() =>
+              getAccountInfo('balance', connect, accs.adminTokenPubkey)
+            }
+          >
+            Balance
+          </button>
+        </div>
+        <div style={{ padding: 40 }}>
+          <span style={{ marginRight: '20px' }}>open your console</span>
+        </div>
+      </div>
+
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          borderBottom: '1px solid #999',
+        }}
+      >
+        <div style={{ padding: 40 }}>
+          <button
+            style={{
+              padding: '5px 10px',
+              color: '#fff',
+              backgroundColor: 'teal',
+              borderRadius: '3px',
+            }}
+            disabled={!keys && !accs}
             onClick={() => getAllBalancesLog()}
           >
-            Get Balances
+            Get all Balances
           </button>
         </div>
         <div style={{ padding: 40 }}>
@@ -116,34 +328,10 @@ const TestComponent = () => {
               borderRadius: '3px',
             }}
             disabled={!keys && !accs}
-            onClick={() => getSPLTokenAcc()}
-          >
-            Get token acc
-          </button>
-        </div>
-        <div style={{ padding: 40 }}>
-          <span style={{ marginRight: '20px' }}>open your console</span>
-        </div>
-      </div>
-
-      <div
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          borderBottom: '1px solid #999',
-        }}
-      >
-        <div style={{ padding: 40 }}>
-          <button
-            style={{
-              padding: '5px 10px',
-              color: '#fff',
-              backgroundColor: 'teal',
-              borderRadius: '3px',
-            }}
-            disabled={!keys && !accs}
-            onClick={() => transferSenderRecipient(transferConfigHA)}
-            // onClick={() => transferSenderRecipient(transferConfigAH)}
+            onClick={() => transferSenderRecipient(transferConfigAH)} // *
+            // onClick={() => transferSenderRecipient(transferConfigHA)} // *
+            // onClick={() => transferSenderRecipient(transferConfigAR)} // *
+            // onClick={() => transferSenderRecipient(transferConfigRA)} // *
           >
             Transfer from to
           </button>
@@ -169,9 +357,9 @@ const TestComponent = () => {
               borderRadius: '3px',
             }}
             disabled={!keys && !accs}
-            onClick={() => getMintInfo(connect, mint)}
+            onClick={() => mintTo(transferConfigAH, mint)} // *
           >
-            Get mint info
+            Mint
           </button>
         </div>
         <div style={{ padding: 40 }}>
@@ -195,9 +383,9 @@ const TestComponent = () => {
               borderRadius: '3px',
             }}
             disabled={!keys && !accs}
-            onClick={() => getAccountInfo(connect, accs.adminTokenPubkey)}
+            onClick={() => approve(transferConfigAH)} // *
           >
-            Get acc info
+            Approve
           </button>
         </div>
         <div style={{ padding: 40 }}>

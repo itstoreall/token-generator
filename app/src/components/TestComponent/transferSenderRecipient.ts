@@ -10,6 +10,11 @@ import encodeAmount from './encodeAmount.ts';
 const transferSenderRecipient = async (config: {}) => {
   const { connect, program, sender, recipient } = config;
 
+  // console.log('connect', connect);
+  // console.log('program', program);
+  // console.log('sender', sender);
+  // console.log('recipient', recipient);
+
   try {
     const transferIx = new TransactionInstruction({
       programId: program,
