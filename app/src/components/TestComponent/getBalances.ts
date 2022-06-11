@@ -15,11 +15,11 @@ const getBalances = async (connect: {}, keys: {}, accs: {}) => {
   );
 
   // --- accounts:
+  // const adminAccount = await getAccount(connect, accs.adminTokenPubkey);
   const { amount: adminTokenBalance } = await getAccount(
     connect,
     accs.adminTokenPubkey
   );
-  const adminAccount = await getAccount(connect, accs.adminTokenPubkey);
   const { amount: ronnyTokenAccInfo } = await getAccount(
     connect,
     accs.ronnyTokenPubkey
@@ -29,7 +29,7 @@ const getBalances = async (connect: {}, keys: {}, accs: {}) => {
     accs.helgaTokenPubkey
   );
 
-  console.log('adminAccount:', adminAccount);
+  // console.log('adminAccount:', adminAccount);
   console.log('adm:', adminWalletBalance / dec);
   console.log('ron:', ronnyWalletBalance / dec);
   console.log('hel:', helgaWalletBalance / dec);
