@@ -9,7 +9,7 @@ use solana_program::{
 
 entrypoint!(process_instruction);
 
-
+#[allow(unused_variables, unused_mut)]
 fn process_instruction(
     program_id: &Pubkey,
     accounts: &[AccountInfo],
