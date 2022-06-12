@@ -1,6 +1,6 @@
 /*
 
-# Rust Solana
+# Hello Solana
 
 ---
 
