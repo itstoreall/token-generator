@@ -68,6 +68,8 @@ Program metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s consumed 40859 of 1371767 co
 ## Sources:
 
 https://docs.metaplex.com/about/terminology
+https://www.storj.io/
+https://rustacean.net/
 
 ---
 
